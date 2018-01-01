@@ -2,7 +2,6 @@ require "minitest/autorun"
 require "ruby-instagram-scraper"
 
 describe RubyInstagramScraper do
-
   describe "when search" do
     it "users must be an array" do
       RubyInstagramScraper.search( "borodanov" )["users"].must_be_instance_of Array
@@ -11,7 +10,7 @@ describe RubyInstagramScraper do
 
   describe "when request user media nodes" do
     it "must be an array" do
-      RubyInstagramScraper.get_user_media_nodes( "borodanov" ).must_be_instance_of Array
+      RubyInstagramScraper.get_user( "borodanov" ).must_be_instance_of Hash
     end
   end
   
@@ -26,17 +25,4 @@ describe RubyInstagramScraper do
       RubyInstagramScraper.get_media( "vKQeMNu7H1" )["shortcode"].must_equal "vKQeMNu7H1"
     end
   end
-
-  describe "when request user media comments" do
-    it "must be an array" do
-      RubyInstagramScraper.get_media_comments( "6zVfmqAMkD", 2 ).must_be_instance_of Array
-    end
-  end
-
-  describe "when request user media comments before specified comment_id value" do
-    it "must be an array" do
-      RubyInstagramScraper.get_media_comments( "6zVfmqAMkD", 2, "17851999804000050" ).must_be_instance_of Array
-    end
-  end
-
 end
